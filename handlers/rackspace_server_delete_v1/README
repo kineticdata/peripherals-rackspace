@@ -1,0 +1,24 @@
+== Rackspace_Server_Delete_V1
+Deletes a server from the Rackspace Cloud
+
+=== Parameters
+[Server Id]
+    The id of the server that you wish to delete.
+
+=== Results
+[Server Id]
+    The id of the server that was deleted.
+[Server Name]
+    The name of the server that was deleted.
+
+==== Sample Configuration
+Server Id:            5227ee55-eb94-4b93-8bf9-ce175960e57f
+
+=== Detailed Description
+This handler deletes a server from the Rackspace Cloud. After creating the 
+Rackspace service, the gem searches for the Server that has the same id as the
+id that was inputted as a paramter. Once that object is found, the destroy 
+method is called and the name and id of the destroyed server are returned.
+
+Note: To find the Rackspace API Key, go to Account Settings and click 'show' 
+next to the API Key label under Login Details.

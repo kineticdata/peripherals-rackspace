@@ -1,0 +1,55 @@
+== Rackspace_Server_Create_V1
+Create a new server in the Rackspace Cloud.
+
+=== Parameters
+[Rackspace Region]
+  The shortcut for the region which you wish to create this volume 
+  (ie. ord == Chicago).
+[Flavor Name]
+  The name of the performance flavor that you want to use (ie. 512MB Standard 
+  Instance).
+[Image Name]
+  The image name (or part of the image name) that you want the server to be 
+  based on. If more than one image matches the name provided, the first one 
+  found will be used.
+[Server Name]
+  The name of the the new server.
+
+=== Results
+[Server Id]
+  The id of the server that was created.
+[Server Name]
+  The name of the server that was created.
+[Image Id]
+  The id of the image that was used to create the server.
+[Image Name]
+  The name of the image that was used to create the server.
+[Flavor Id]
+  The id of the flavor that was used to create the server.
+[Flavor Name]
+  The name of the flavor that was used to create the server.
+[Flavor Name]
+  The amount of ram included in the flavor that was used to create the server.
+[Flavor System Disk]
+  The amount system disk space included in the flavor that was used to create 
+  the server.
+[Flavor CPUs]
+  The amount of CPUs included in the flavor that was used to create the server.
+
+==== Sample Configuration
+Rackspace Region:               ord
+Flavor Name:                    512MB Standard Instance
+Image Name:                     Fedora 18
+Server Name:                    Handler Test
+
+
+=== Detailed Description
+This handler creates a server from the Rackspace Cloud. After creating the 
+Rackspace service, the gem searches for the image and flavor objects based on
+the names inputted as parameters. Once those objects are found, the call is sent
+to Rackspace to create the server. The handler then returns information about
+the server that was just created. Any errors that are encountered will be caught
+and re-raised by the handler.
+
+Note: To find the Rackspace API Key, go to Account Settings and click 'show' 
+next to the API Key label under Login Details.

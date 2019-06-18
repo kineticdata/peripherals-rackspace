@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taskDefinition id="rackspace_server_create" name="Rackspace Server Create"
+    schema_version="1.0" version="1">
+    <author>support@kineticdata.com</author>
+    <description>Create a new server in the Rackspace Cloud.</description>
+    <helpurl></helpurl>
+    <visible>true</visible>
+    <deferrable>false</deferrable>
+    <parameters>
+        <parameter id="rackspace_region" label="Rackspace Region" required="false"
+            tooltip="The shortcut for the region which you wish to create this volume (ie. ord == Chicago)." />
+        <parameter id="flavor_name" label="Flavor Name" required="true"
+            tooltip="The name of the performance flavor that you want to use (ie. 512MB Standard Instance)." />
+        <parameter id="image_name" label="Image Name" required="true" 
+            tooltip="The image name (or part of the image name) that you want the server to be based on. If more than one image matches the name provided, the first one found will be used." />
+        <parameter id="server_name" label="Server Name" required="true" 
+            tooltip="The name of the the new server." />
+    </parameters>
+    <handler name="rackspace_server_create" version="1">
+        <infos>
+            <info name="username">&lt;%= @info['username'] %&gt;</info>
+            <info name="api_key">&lt;%= @info['api_key'] %&gt;</info>
+            <info name="enable_debug_logging">&lt;%= @info['enable_debug_logging'] %&gt;</info>
+        </infos>
+        <parameters>
+            <parameter name="rackspace_region">&lt;%= @parameters['rackspace_region'] %&gt;</parameter>
+            <parameter name="flavor_name">&lt;%= @parameters['flavor_name'] %&gt;</parameter>
+            <parameter name="image_name">&lt;%= @parameters['image_name'] %&gt;</parameter>
+            <parameter name="server_name">&lt;%= @parameters['server_name'] %&gt;</parameter>
+        </parameters>
+    </handler>
+    <results format="xml">
+        <result name="server_id" />
+        <result name="server_name" />
+        <result name="image_id" />
+        <result name="image_name" />
+        <result name="flavor_id" />
+        <result name="flavor_name" />
+        <result name="flavor_ram" />
+        <result name="flavor_system_disk" />
+        <result name="flavor_cpus" />
+    </results>
+</taskDefinition>

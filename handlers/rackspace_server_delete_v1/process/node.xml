@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taskDefinition id="rackspace_server_delete" name="Rackspace Server Delete"
+    schema_version="1.0" version="1">
+    <author>support@kineticdata.com</author>
+    <description>Deletes a server from the Rackspace Cloud.</description>
+    <helpurl></helpurl>
+    <visible>true</visible>
+    <deferrable>false</deferrable>
+    <parameters>
+        <parameter id="server_id" label="Server Id" required="true"
+            tooltip="The id of the server that you wish to delete." />
+    </parameters>
+    <handler name="rackspace_server_delete" version="1">
+        <infos>
+            <info name="username">&lt;%= @info['username'] %&gt;</info>
+            <info name="api_key">&lt;%= @info['api_key'] %&gt;</info>
+            <info name="enable_debug_logging">&lt;%= @info['enable_debug_logging'] %&gt;</info>
+        </infos>
+        <parameters>
+            <parameter name="server_id">&lt;%= @parameters['server_id'] %&gt;</parameter>
+        </parameters>
+    </handler>
+    <results format="xml">
+        <result name="server_id" />
+        <result name="server_name" />
+    </results>
+</taskDefinition>

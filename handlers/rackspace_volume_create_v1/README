@@ -1,0 +1,34 @@
+== Rackspace_Volume_Create_V1
+Create a new volume in the Rackspace Cloud.
+
+=== Parameters
+[Display Name]
+  The display name of the new volume.
+[Volume Type]
+  The name of the volume type you want to use (ie 'SATA' or 'SSD').
+[Size]
+  The size of the new volume in GB. Minimum of 100 and maximum of 1024.
+[Rackspace Region]
+  The shortcut for the region which you wish to create this volume 
+  (ie. ord == Chicago).
+
+=== Results
+[Volume Id]
+  The id of the volume that was just created.
+[Volume State]
+  The state of the volume that was just created.
+
+==== Sample Configuration
+Display Name:                 Test Volume
+Volume Type:                  SATA
+Size:                         100
+Rackspace Region:             ord
+
+=== Detailed Description
+This handler creates a server from the Rackspace Cloud. After creating the 
+Rackspace service, the call is sent to Rackspace to create the volume. The 
+handler then returns information about the volume that was just created. Any 
+errors that are encountered will be caughtcand re-raised by the handler.
+
+Note: To find the Rackspace API Key, go to Account Settings and click 'show' 
+next to the API Key label under Login Details.

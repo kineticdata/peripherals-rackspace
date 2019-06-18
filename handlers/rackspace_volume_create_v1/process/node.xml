@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taskDefinition id="rackspace_volume_create" name="Rackspace Volume Create"
+    schema_version="1.0" version="1">
+    <author>support@kineticdata.com</author>
+    <description>Create a new volume in the Rackspace Cloud.</description>
+    <helpurl></helpurl>
+    <visible>true</visible>
+    <deferrable>false</deferrable>
+    <parameters>
+        <parameter id="display_name" label="Display Name" required="true" 
+            tooltip="The display name of the new volume." />
+        <parameter id="volume_type" label="Volume Type" required="true" 
+            tooltip="The name of the volume type you want to use (ie 'SATA' or 'SSD')." />
+        <parameter id="size" label="Size" required="true" 
+            tooltip="The size of the new volume in GB. Minimum of 100 and maximum of 1024." />
+        <parameter id="rackspace_region" label="Rackspace Region" required="false"
+            tooltip="The shortcut for the region which you wish to create this volume (ie. ord == Chicago)." />
+    </parameters>
+    <handler name="rackspace_volume_create" version="1">
+        <infos>
+            <info name="username">&lt;%= @info['username'] %&gt;</info>
+            <info name="api_key">&lt;%= @info['api_key'] %&gt;</info>
+            <info name="enable_debug_logging">&lt;%= @info['enable_debug_logging'] %&gt;</info>
+        </infos>
+        <parameters>
+            <parameter name="display_name">&lt;%= @parameters['display_name'] %&gt;</parameter>
+            <parameter name="volume_type">&lt;%= @parameters['volume_type'] %&gt;</parameter>
+            <parameter name="size">&lt;%= @parameters['size'] %&gt;</parameter>
+            <parameter name="rackspace_region">&lt;%= @parameters['rackspace_region'] %&gt;</parameter>
+        </parameters>
+    </handler>
+    <results format="xml">
+        <result name="volume_id"/>
+        <result name="volume_state"/>
+    </results>
+</taskDefinition>
